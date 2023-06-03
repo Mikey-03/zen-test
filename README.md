@@ -68,11 +68,12 @@ Note : In case you want the program to add a missing word/words then make sure y
 ## Sample output
 #### Sample input 1 : I will go to the office yesterday!
 #### Sample output 1 : I went to the office yesterday!
-<img width="773" alt="Screenshot 2023-06-03 at 1 30 45 PM" src="https://github.com/Mikey-03/CP-Setup/assets/34760247/f21e907b-63dd-4456-b4a2-8306dc18709b">
+<img width="773" alt="Screenshot 2023-06-03 at 1 30 45 PM" src="https://github.com/Mikey-03/zen-test/assets/34760247/71826b49-944c-4de0-89c8-4f93fae069ab">
+
 
 #### Sample input 2 : I I I am veY thirsty thirsty.can you plese give guve [MISSING] a glass of [MISSING]? the [MISSING] fox ased the rabbit. I dont have water, the [MISSING] replied.
 #### Sample output 2 : I am very thirsty. Can you please give me a glass of water? The white fox asked the rabbit. I don't have water, the rabbit replied.
-<img width="1272" alt="Screenshot 2023-06-03 at 1 34 55 PM" src="https://github.com/Mikey-03/CP-Setup/assets/34760247/2b694cc5-2ed8-490e-aefc-ecd60c93241f">
+<img width="1272" alt="Screenshot 2023-06-03 at 1 34 55 PM" src="https://github.com/Mikey-03/zen-test/assets/34760247/a8700920-ab00-4ab7-875c-61be154c6782">
 
  
 ##
