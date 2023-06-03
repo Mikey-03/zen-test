@@ -1,21 +1,84 @@
-Congrats! 🎉
+# Token Healing Script
 
-If you made it here then you have passed our initial screening. Welcome to second round of your interview.
+This Python script aims to enhance the readability and coherence of text. The algorithm consists of three main steps: 
+1. Spelling and grammar correction
+2. Addition of missing words
+3. Removal of duplicate/extra words
 
-During this round, we will evaluate your ability to handle new and intricate learning challenges. Choose one of the following assignments. But don't spend no more than 12 hours working on it. After 12 hours, please submit your progress, regardless of the extent of completion. Feel free to generate code using AI tools and chat apps like chatgpt, bing chat, code copilots, codium etc.
+## Installation
 
-To access the assignment details, kindly visit the ***#second-round*** channel . If you have any questions ask in the ***#interview-doubts*** channel.
+Make sure you have Python 3.x installed on your system.
 
-Discord link -<https://discord.gg/uTYkFDS8>
+To run this script, you need to install the following dependencies:
 
-To create a pull request for a public git repo, you need to follow these steps:
+1. gingerit: A Python library for spelling and grammar correction.
+2. torch: The PyTorch library for deep learning.
+3. transformers: The Transformers library for natural language processing.
+4. spacy: A Python library for natural language processing.
 
--   Fork the repo that you want to contribute to. This will create a copy of the repo under your own GitHub account. You can fork a repo by clicking the **Fork** button on the top right corner of the repo page.
--   Clone your forked repo to your local machine. You can do this by running **`git clone <https://github.com/your-username/repo-name.git`**> in your terminal, where **`your-username`** is your GitHub username and **`repo-name`** is the name of the repo you forked.
--   Create a new branch for your changes. You can do this by running **`git checkout -b branch-name`**, where **`branch-name`** is a descriptive name for your branch.
--   Make your changes in the new branch. You can use any code editor or IDE that you prefer. You can also use GitHub Desktop to manage your changes.
--   Add and commit your changes to the new branch. You can do this by running **`git add .`** to stage all your changes and **`git commit -m "message"`** to commit them with a message, where **`message`** is a brief summary of what you did.
--   Push your changes to your forked repo on GitHub. You can do this by running **`git push origin branch-name`**, where **`branch-name`** is the name of your branch.
--   Create a pull request from your forked repo to the original repo. You can do this by going to your forked repo on GitHub and clicking the **Compare & pull request** button. This will open a page where you can review your changes and add a title and a description for your pull request. You can also link your pull request to an issue if there is one related to your changes. Then click **Create pull request** to submit it.
+You can install the required dependencies using the following command:
 
-That's it! You have created a pull request for a public git repo. Now you need to wait for the maintainers of the original repo to review and merge your pull request. They might also ask you for some feedback or changes before merging it. You can communicate with them through the comments section of your pull request.
+```shell
+pip install gingerit torch transformers spacy
+python -m spacy download en_core_web_sm
+```
+## Usage
+
+To use the token healing script, follow these steps:
+
+1. Run the "Token_healing_script.py" file in your IDE 
+2. The program will prompt the user to enter the text (type or copy paste the text you want to enter)
+3. Then the program will process the input and output the enhanced text
+
+Note : In case you want the program to add a missing word/words then make sure you type "[MISSING]" in the input text wherever you want a missing word to inserted automatically. The program predicts the most suitable word to be inserted and replaces "[MISSING]" with that word. (look at the sample output for better understanding)
+
+## Working 
+
+#### Imports:
+* torch: This is the main library used for deep learning and tensor computations.
+* spacy: A popular library used for natural language processing (NLP) tasks.
+* string: Provides a collection of string constants, such as punctuation characters.
+* logging: Used for configuring the logging system to control the verbosity of the transformers library.
+* re: The regular expression module for pattern matching and string manipulation.
+* GingerIt from the gingerit library: A parser for spelling and grammar correction.
+* BertTokenizer and BertForMaskedLM from the transformers library: Components for utilizing BERT (Bidirectional Encoder              
+  representations from Transformers) model for masked language modeling.
+#### Logging Configuration:
+* A logging configuration is set to suppress logs generated by the transformers library, reducing the verbosity of the output.
+#### Initialization:
+* parser: An instance of GingerIt is created, which will be used for spelling and grammar correction.
+* BERT Model Setup:
+  model_name: Specifies the name of the pre-trained BERT model to be used (bert-base-uncased).
+  tokenizer: Initializes a BERT tokenizer from the specified pre-trained model.
+  model: Loads a pre-trained BERT model for masked language modeling and sets it to evaluation mode.
+* Spacy Model Setup:
+  The English language model (en_core_web_sm) is loaded into the nlp object.
+#### Function Definitions:
+* correct_spelling_and_grammar: This function takes a text as input and uses the parser object to parse and correct the spelling and grammar of the text. The corrected    result is returned.
+* add_missing_words: This function takes a text as input and processes it with the help of BERT. It identifies missing words (tokens) in the input text by replacing them with the "[MISSING]" placeholder. The BERT model predicts the missing word, which is then substituted back into the text. The function returns the text with missing words added.
+* remove_duplicate_words: This function takes a text as input and utilizes a regular expression pattern to identify consecutive duplicate words, including those with punctuation. It removes the duplicates and returns the deduplicated text.
+#### User Input:
+* The code prompts the user to enter a text.
+#### Text Processing Pipeline:
+* corrected_spelling_grammar_text: The user's input text is processed by the correct_spelling_and_grammar function to correct any spelling and grammar errors.
+* final_text_with_missing_words: The resulting text from the previous step is processed by the add_missing_words function, which identifies missing words using BERT and replaces them with predicted tokens.
+* deduplicated_final_text: The text from the previous step is processed by the remove_duplicate_words function, which removes consecutive duplicate words.
+#### Output:
+* The enhanced text, after going through the text processing pipeline, is printed as "Enhanced text".
+## Sample output
+#### Sample input 1 : I will go to the office yesterday!
+#### Sample output 1 : I went to the office yesterday!
+<img width="773" alt="Screenshot 2023-06-03 at 1 30 45 PM" src="https://github.com/Mikey-03/CP-Setup/assets/34760247/f21e907b-63dd-4456-b4a2-8306dc18709b">
+
+#### Sample input 2 : I I I am veY thirsty thirsty.can you plese give guve [MISSING] a glass of [MISSING]? the [MISSING] fox ased the rabbit. I dont have water, the [MISSING] replied.
+#### Sample output 2 : I am very thirsty. Can you please give me a glass of water? The white fox asked the rabbit. I don't have water, the rabbit replied.
+<img width="1272" alt="Screenshot 2023-06-03 at 1 34 55 PM" src="https://github.com/Mikey-03/CP-Setup/assets/34760247/2b694cc5-2ed8-490e-aefc-ecd60c93241f">
+
+ 
+##
+
+**Feel free to modify the code as needed and experiment with different inputs to observe the effects of the token healing algorithm.**
+
+**Note: The current implementation uses the BERT model and may require significant computational resources. Adjusting the max_length parameter and using smaller models or alternative approaches can help optimize the performance if needed.**
+
+**For any questions or issues, please feel free to contact me at 211b221@juetguna.in.**
